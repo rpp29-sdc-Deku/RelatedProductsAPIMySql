@@ -1,28 +1,24 @@
 const express = require('express');
-const helpers = require("../mysql-database/index.js")
+const bodyParser = require('body-parser')
 
-const app = express();
+let app = express();
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true, useNewUrlParser: true}));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next()
+});
+
+// initialize routes
+app.use('/api',require('./Routes/apiRoutes.js'));
+
 const PORT = 3000;
-
-
-// routes
-app.get("/", (req, res) => {
-  res.send('welcome to isaacs api')
-})
-
-app.post("/post", (req, res) => {
- var param = [req.body.id, req.body.current_product_id, req.body.related_product_id];
- helpers.relatedProducts(param, (err) => {
-   if (err) {
-     console.log(err)
-   }
-     res.send('entry added')
- })
-})
-
 app.listen(PORT, () => {
-  console.log(` Server is running on port: ${PORT}`)
-})
+  console.log(`Server is listening on port: ${PORT}!!`);
+});

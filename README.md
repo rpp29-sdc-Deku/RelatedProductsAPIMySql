@@ -1,2 +1,2 @@
-# RelatedProductsAPI
-Isaac API 
+# RelatedProductsAPIMySql
+Isaac API for mySQL
