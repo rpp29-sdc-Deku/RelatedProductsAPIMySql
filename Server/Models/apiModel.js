@@ -11,12 +11,11 @@ const connection = mysql.createConnection({
 // connect to database
 connection.connect(error => {
   if (error) {
-    console.log('error in mysql connection')
+    console.log('error in mysql connection..')
   } else {
-    console.log('You have connected to mysql database successfully')
+    console.log('You have connected to mysql database successfully..')
   }
 })
-
 
 //helper function that gets related product ids from database with pid
 const getRelatedProducts = function (pid, callback) {

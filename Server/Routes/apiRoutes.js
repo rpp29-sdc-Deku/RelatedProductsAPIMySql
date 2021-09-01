@@ -6,7 +6,7 @@ const db = require('../Models/apiModel.js');
 
 // Retrieve Product ID & Related Product ID
 router.get('/related', (req,res) => {
-  var currentID = req.query.current_product_id;
+  var currentID = req.query.id;
   db.getRelatedProducts(currentID, (callback) => {
     res.send(callback)
   })
@@ -19,7 +19,7 @@ router.post('/related', (req,res) => {
     if (err) {
       console.log(err)
     }
-      res.send('entry added')
+      res.send('entry added..')
   })
 })
 
