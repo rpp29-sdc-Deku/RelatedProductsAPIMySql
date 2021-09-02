@@ -6,20 +6,14 @@ const db = require('../Models/apiModel.js');
 
 // Retrieve Product ID & Related Product ID
 router.get('/related', (req,res) => {
-  var currentID = req.query.id;
-  db.getRelatedProducts(currentID, (callback) => {
-    res.send(callback)
-  })
-})
 
-// Post to database
-router.post('/related', (req,res) => {
-  var param = [req.body.id, req.body.current_product_id, req.body.related_product_id];
-  db.postRelatedProducts(param, (err) => {
-    if (err) {
-      console.log(err)
-    }
-      res.send('entry added..')
+  let productID = req.query.id
+  //if no _id is added defaults to first item in database
+  if (req.query.id === undefined) {
+    productID = 1
+  }
+  db.getRelatedProducts(productID, (callback) => {
+    res.send(callback)
   })
 })
 

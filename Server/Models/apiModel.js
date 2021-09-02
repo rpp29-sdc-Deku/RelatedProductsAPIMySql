@@ -11,7 +11,7 @@ const connection = mysql.createConnection({
 // connect to database
 connection.connect(error => {
   if (error) {
-    console.log('error in mysql connection..')
+    throw error;
   } else {
     console.log('You have connected to mysql database successfully..')
   }
@@ -47,5 +47,6 @@ const getRelatedProducts = function (pid, callback) {
 
 module.exports = {
   postRelatedProducts,
-  getRelatedProducts
+  getRelatedProducts,
+  connection
 }
