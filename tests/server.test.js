@@ -16,5 +16,5 @@ describe("GET /api/related", function () {
     expect(response.status).to.eql(200);
     expect(response.body).to.eql([5,9,7,2,1]);
   });
-});
+})
 
