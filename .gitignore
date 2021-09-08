@@ -4,4 +4,3 @@ config.js
 mysqlnotes.txt
 clusterindex.js
 clusterserver.js
-tests/server.test.js
